@@ -31,7 +31,8 @@
     "es6": true,
     "node": true,
     "browser": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -42,7 +43,12 @@
   },
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "cypress"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:cypress/recommended"
+  ]
 }

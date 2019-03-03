@@ -1,11 +1,17 @@
-## React Boiler
+## User Profile
 
-- React
-- React Router
-- Webpack - for bundling
-  - dev setup with Hot Module Reloading
-- Sass - for styling
-- Jest and Enzyme - for testing
-- Babel - for transpiling
-- eslint - for safety
 
+Inputs
+
+- First Name
+- Last Name
+- Username
+- Email
+- Title
+- Image (with crop)
+- Custom Accent Color
+
+- percent complete
+
+
+Technology

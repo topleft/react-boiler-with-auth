@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import Home from '../Home';
+import Private from '../Private';
 import PageOne from '../PageOne';
 import PageTwo from '../PageTwo';
 import NavBar from '../../components/NavBar';
@@ -13,19 +15,47 @@ const links = [
     to: '/home',
     className: 'home',
     label: 'Home',
+    authRequired: false,
     render: function HomeComp (props) {return <Home {...props}/>;}
   },{
     to: '/page-one',
     className: 'page-one',
     label: 'Page One',
+    authRequired: false,
     render: PageOne
   },{
     to: '/page-two',
     className: 'page-two',
     label: 'Page Two',
+    authRequired: false,
     render: PageTwo
+  },{
+    to: '/private',
+    className: 'private',
+    label: 'Private',
+    authRequired: true,
+    render: Private
   }
 ];
+
+const renderRoute = (props, index) => {
+  const {
+    to,
+    render,
+  } = props;
+  return <Route
+    key={index}
+    path={to}
+    render={render}/>;
+};
+
+renderRoute.propTypes = {
+  to: PropTypes.string,
+  render: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element
+  ]),
+};
 
 const App = () => (
   <Router>
@@ -33,9 +63,9 @@ const App = () => (
       <Header>
         <NavBar links={links}/>
       </Header>
-      <div style={{marginLeft: '7.5rem'}}>
+      <div style={{marginLeft: '75rem'}}>
         <Switch>
-          { links.map(({to, render}, i) => <Route key={i} path={to} render={render}/>)}
+          { links.map(renderRoute) }
           <Redirect to={'/home'}/>
         </Switch>
       </div>

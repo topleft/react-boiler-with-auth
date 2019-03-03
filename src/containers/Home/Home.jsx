@@ -36,7 +36,7 @@ class Home extends React.Component {
 Home.propTypes = {
   home: PropTypes.object,
   homeActions: PropTypes.object,
-}
+};
 
 export default connect(
   function mapStateToProps( state ){ return { home: state.get('home') }; },
