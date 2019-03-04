@@ -42,10 +42,12 @@ describe('authentication: UN-AUTHED', () => {
 
   it.only('should allow an un-authed user to see public page', () => {
     cy.visit('localhost:8080/');
+    cy.url().should('eq', 'http://localhost:8080/home');
   });
 
-  it('should NOT allow an un-authed user to see private page', () => {
-
+  it.only('should NOT allow an un-authed user to see private page', () => {
+    cy.visit('localhost:8080/private');
+    cy.url().should('eq', 'http://localhost:8080/home');
   });
 
   it('should NOT show an un-authed user sign out button', () => {

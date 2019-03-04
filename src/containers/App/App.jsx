@@ -6,6 +6,7 @@ import Home from '../Home';
 import Private from '../Private';
 import PageOne from '../PageOne';
 import PageTwo from '../PageTwo';
+import PrivateRoute from '../../components/PrivateRoute';
 import NavBar from '../../components/NavBar';
 import Header from '../../components/Header';
 import '../../styles/main.scss';
@@ -42,11 +43,17 @@ const renderRoute = (props, index) => {
   const {
     to,
     render,
+    authRequired,
   } = props;
-  return <Route
-    key={index}
-    path={to}
-    render={render}/>;
+  return authRequired
+    ? <PrivateRoute
+      key={index}
+      path={to}
+      render={render}/>
+    : <Route
+      key={index}
+      path={to}
+      render={render}/>;
 };
 
 renderRoute.propTypes = {
@@ -55,6 +62,7 @@ renderRoute.propTypes = {
     PropTypes.func,
     PropTypes.element
   ]),
+  authRequired: PropTypes.bool,
 };
 
 const App = () => (
