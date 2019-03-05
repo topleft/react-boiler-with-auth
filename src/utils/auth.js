@@ -21,6 +21,11 @@ export default {
 
   setToken(token) {
     localStorage.setItem(TOKEN_KEY, token);
-  }
+  },
+
+  logout() {
+    localStorage.removeItem(TOKEN_KEY);
+  },
+
 
 };

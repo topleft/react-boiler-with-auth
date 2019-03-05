@@ -93,11 +93,15 @@
     "redux-thunk": "^2.3.0"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/test/setupEnzyme.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupEnzyme.js"
+    ],
     "moduleNameMapper": {
       "\\.(scss|css)$": "<rootDir>/test/mocks/styleMock.js",
       "\\.(svg)$": "<rootDir>/test/mocks/styleMock.js"
     },
-    "testPathIgnorePatterns": ["/cypress/"]
+    "testPathIgnorePatterns": [
+      "/cypress/"
+    ]
   }
 }
