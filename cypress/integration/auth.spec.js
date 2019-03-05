@@ -50,7 +50,7 @@ describe('authentication: UN-AUTHED', () => {
     cy.url().should('eq', 'http://localhost:8080/home');
   });
 
-  it('should NOT show an un-authed user sign out button', () => {
+  it('should NOT show an un-authed user the sign out button', () => {
 
   });
 

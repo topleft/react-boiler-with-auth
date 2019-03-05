@@ -3,19 +3,19 @@ const TOKEN_KEY = 'token';
 
 export default {
 
-  check() {
+  isLoggedIn() {
     const token = window.localStorage.getItem(TOKEN_KEY);
     if (!token) return false;
-    const payload = this.decodePayload(token);
-    return !this.isExpired(payload.exp);
+    const payload = this._decodePayload(token);
+    return !this._isExpired(payload.exp);
   },
 
-  decodePayload(rawToken) {
+  _decodePayload(rawToken) {
     const rawPayload = rawToken.split('.')[1];
     return JSON.parse(atob(rawPayload));
   },
 
-  isExpired(date) {
+  _isExpired(date) {
     return parseInt(date) < Date.now();
   },
 

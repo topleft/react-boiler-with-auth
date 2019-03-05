@@ -10,7 +10,7 @@
 
 ### Frame out tests
 
-If we satisfy all of these we should ave a pretty solid auth system.
+If we satisfy all of these we should have a pretty solid auth system.
 
 ```js
 
@@ -113,3 +113,44 @@ describe('authentication: AUTHED', () => {
 
 
 ```
+
+To start as minimally as possible, I chose to make sure an unauthed user could only see public content. To accomplish this I am assuming that our auth service will return a JWT with an expiration value given in milliseconds in its payload.  First I wrote my failing Cypress test:
+
+```js
+it.only('should allow an un-authed user to a see public page', () => {
+  cy.visit('localhost:8080/');
+  cy.url().should('eq', 'http://localhost:8080/home');
+});
+```
+
+To make this test pass I need a way of choosing what component to render based on a users authentication status. This means two things: a `PrivateRoute` component and a function that will return true if a user is authenticated and false otherwise.
+
+This lead me to more tests...an `isAuthenticated` function:
+
+```js
+import auth from './auth';
+
+const validMockToken = '';
+const expiredMockToken = '';
+
+describe('auth.isAuthenticated', () => {
+  test('returns false if it does not find a token in local storage', () => {
+    expect(auth.isAuthenticated()).toBe(false);
+  });
+
+  test('returns false if the token is expired', () => {
+    window.localStorage.setItem('token', expiredMockToken);
+    expect(auth.isAuthenticated()).toBe(false);
+  });
+
+  test('returns true if the token is valid', () => {
+    window.localStorage.setItem('token', validMockToken);
+    expect(auth.isAuthenticated()).toBe(true);
+  });
+});
+
+```
+
+### `auth.isAuthenticated`
+
+

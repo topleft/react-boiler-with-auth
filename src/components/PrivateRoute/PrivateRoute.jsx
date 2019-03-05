@@ -11,7 +11,7 @@ const PrivateRoute = (props) => {
     path,
     render
   } = props;
-  return auth.check()
+  return auth.isLoggedIn()
     ? <Route
         path={to}
         render={render}/>
