@@ -153,4 +153,9 @@ describe('auth.isAuthenticated', () => {
 
 ### `auth.isAuthenticated`
 
+### api/auth.login
+
+Next I implement a basic login api call to a fake server and test it with Jest.
+
+With that in place I am ready to wire up redux (actions and reducers).
 

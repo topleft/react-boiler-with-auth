@@ -4,7 +4,7 @@ const TOKEN_KEY = 'token';
 export default {
 
   isLoggedIn() {
-    const token = window.localStorage.getItem(TOKEN_KEY);
+    const token = localStorage.getItem(TOKEN_KEY);
     if (!token) return false;
     const payload = this._decodePayload(token);
     return !this._isExpired(payload.exp);
@@ -26,6 +26,14 @@ export default {
   logout() {
     localStorage.removeItem(TOKEN_KEY);
   },
+
+  getUser() {
+    const user = localStorage.getItem('user');
+    return user
+      ? Map(JSON.parse(user))
+      : null;
+
+  }
 
 
 };
