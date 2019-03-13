@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -7,7 +8,6 @@ const path = require('path');
 
 const ROOT_PATH = path.join(__dirname, '..');
 const APP_PATH = path.join(__dirname, '..', 'src');
-const VENDOR_PATH = path.join(__dirname, '..', 'node_modules');
 const BUILD_PATH = path.join(__dirname, '..', 'dist');
 
 

@@ -23,4 +23,4 @@ export default {
         throw new Error('Error on login', err);
       });
   }
-}
+};

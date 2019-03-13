@@ -50,5 +50,10 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:cypress/recommended"
-  ]
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

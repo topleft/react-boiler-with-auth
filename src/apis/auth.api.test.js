@@ -12,7 +12,7 @@ describe('authApi', () => {
     const res = {
       data: { token: 'token' },
       status: 200,
-    }
+    };
     mockAxios.post.mockImplementationOnce( () =>
       Promise.resolve(res)
     );

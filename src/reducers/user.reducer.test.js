@@ -1,6 +1,6 @@
 import userReducer from './user.reducer';
 import userConstants from '../constants/user.constants';
-import { Map, fromJS } from 'immutable';
+import { Map } from 'immutable';
 import authUtils from '../utils/auth.utils';
 jest.mock('../utils/auth.utils');
 
