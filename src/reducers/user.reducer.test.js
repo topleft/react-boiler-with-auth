@@ -1,8 +1,8 @@
-import userReducer from './user';
-import userConstants from '../constants/user';
+import userReducer from './user.reducer';
+import userConstants from '../constants/user.constants';
 import { Map, fromJS } from 'immutable';
-import authUtils from '../utils/auth';
-jest.mock('../utils/auth');
+import authUtils from '../utils/auth.utils';
+jest.mock('../utils/auth.utils');
 
 describe('user reducer',() => {
 

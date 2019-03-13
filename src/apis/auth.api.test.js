@@ -1,6 +1,6 @@
 import mockAxios from 'axios';
-import authApi from './auth';
-import auth from '../utils/auth';
+import authApi from './auth.api';
+import authUtils from '../utils/auth.utils';
 
 const AUTH_API_BASE_URL = 'http://www.localhost:3000';
 
@@ -8,7 +8,7 @@ describe('authApi', () => {
 
   it('calls the user service and then calls setToken on SUCCESS', (done) => {
 
-    const spy = jest.spyOn(auth, 'setToken');
+    const spy = jest.spyOn(authUtils, 'setToken');
     const res = {
       data: { token: 'token' },
       status: 200,
@@ -37,10 +37,10 @@ describe('authApi', () => {
 
   it('calls the user service and then calls logout on FAILURE', (done) => {
 
-    const logout = jest.spyOn(auth, 'logout');
+    const logout = jest.spyOn(authUtils, 'logout');
     const res = {
       status: 401,
-    }
+    };
     mockAxios.post.mockImplementationOnce( () =>
       Promise.resolve(res)
     );
@@ -62,4 +62,4 @@ describe('authApi', () => {
       });
 
   });
-})
+});

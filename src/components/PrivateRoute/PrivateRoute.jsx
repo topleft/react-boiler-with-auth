@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
-import auth from '../../utils/auth';
+import authUtils from '../../utils/auth.utils';
 import './styles.scss';
 
 
@@ -11,7 +11,7 @@ const PrivateRoute = (props) => {
     path,
     render
   } = props;
-  return auth.isLoggedIn()
+  return authUtils.isLoggedIn()
     ? <Route
         path={to}
         render={render}/>

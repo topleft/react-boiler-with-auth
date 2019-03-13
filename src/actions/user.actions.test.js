@@ -1,8 +1,8 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import mockAxios from 'axios';
-import * as userActions from './user';
-import userConstants from '../constants/user';
+import * as userActions from './user.actions';
+import userConstants from '../constants/user.constants';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

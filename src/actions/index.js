@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
-import * as homeActions from './home';
-import * as userActions from './home';
+import * as homeActions from './home.actions';
+import * as userActions from './user.actions';
 
 export function bindActions(dispatch) {
   return {

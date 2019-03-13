@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-immutable';
 import { Map } from 'immutable';
-import home, { initialState as homeInitialState } from './home';
-import user, { initialState as userInitialState } from './user';
+import home, { initialState as homeInitialState } from './home.reducer';
+import user, { initialState as userInitialState } from './user.reducer';
 
 const reducers = {
   home,

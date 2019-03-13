@@ -1,6 +1,6 @@
 import { Map, fromJS } from 'immutable';
-import userConstants from '../constants/user';
-import authUtils from '../utils/auth';
+import userConstants from '../constants/user.constants';
+import authUtils from '../utils/auth.utils';
 
 // initialState as a function allows for cleaner testing
 const getInitialState = () => (

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import auth from '../utils/auth';
+import auth from '../utils/auth.utils';
 
 const AUTH_API_BASE_URL = 'http://www.localhost:3000';
 

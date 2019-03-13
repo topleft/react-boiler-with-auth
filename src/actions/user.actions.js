@@ -1,9 +1,9 @@
-import authApi from '../apis/auth';
-import userConstants from '../constants/user';
+import api from '../apis';
+import userConstants from '../constants/user.constants';
 
 export const fetchLogin = ({username, password}) => (dispatch) => {
   dispatch(request({username}));
-  return authApi.login(username, password)
+  return api.auth.login(username, password)
     .then(() => {
       dispatch(success({username}));
     })

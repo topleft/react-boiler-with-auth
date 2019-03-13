@@ -2,10 +2,10 @@
 I am trying to spy on an ES6 module with jest. In the code below, I would like to know if `auth.setToken` is called.
 
 ```js
-// ./src/apis/auth.js
+// ./src/apis/auth.api.js
 
 import axios from 'axios';
-import auth from '../utils/auth';
+import authUtils from '../utils/auth.utils';
 
 const AUTH_API_BASE_URL = 'http://www.localhost:3000';
 
@@ -18,7 +18,7 @@ export default {
       .then((res) => {
         if (res.status === 200) {
           const token = res.data.token;
-          auth.setToken(token);
+          authUtils.setToken(token);
           return true;
         } else {
           throw new Error('Invalid response on login', res);
@@ -33,7 +33,7 @@ export default {
 ```
 
 ```js
-// ./src/utils/auth.js
+// ./src/utils/auth.utils.js
 const TOKEN_KEY = 'token';
 
 export default {
@@ -49,11 +49,11 @@ export default {
 
 
 ```js
-// ./src/apis/auth.test.js
+// ./src/apis/auth.api.test.js
 
 import mockAxios from 'axios';
 import authApi from './auth';
-import auth from '../utils/auth';
+import authUtils from '../utils/auth.utils';
 
 const AUTH_API_BASE_URL = 'http://www.localhost:3000';
 
@@ -61,7 +61,7 @@ describe('authApi', () => {
 
   it('login', () => {
 
-    const spy = jest.spyOn(auth, 'setToken');
+    const spy = jest.spyOn(authUtils, 'setToken');
     const res = {
       data: { token: 'token' },
       status: 200,
