@@ -4,7 +4,7 @@ import {
   RESET_COUNT,
   INCREMENT_COUNT,
   DECREMENT_COUNT
-} from '../actions/home';
+} from '../actions/home.actions';
 
 export const initialState = Map({
   count: 0
