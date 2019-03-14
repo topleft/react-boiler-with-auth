@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NavBar from '../../components/NavBar';
+import HeaderAccountInfo from '../../components/HeaderAccountInfo';
 import './styles.scss';
 
 
@@ -18,7 +19,7 @@ const Header = (props) => {
         <NavBar links={links}></NavBar>
       </div>
       <div className={'header__account'}>
-        ACCOUNT
+        <HeaderAccountInfo/>
       </div>
     </header>
   );

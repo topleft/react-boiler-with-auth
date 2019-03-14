@@ -41,7 +41,7 @@ describe('log in form', () => {
 describe('authentication: UN-AUTHED', () => {
 
   it('should allow an un-authed user to see public page', () => {
-    cy.visit('localhost:8080/ome');
+    cy.visit('localhost:8080/home');
     cy.url().should('eq', 'http://localhost:8080/home');
   });
 
@@ -54,8 +54,9 @@ describe('authentication: UN-AUTHED', () => {
 
   });
 
-  it('should show an un-authed user the log in button', () => {
-
+  it.only('should show an un-authed user the log in button', () => {
+    cy.visit('localhost:8080/home');
+    cy.get('[data-test=login-button]');
   });
 
   it('should show an un-authed user the sign up button', () => {

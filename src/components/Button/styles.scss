@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+@import '../../styles/typography.scss';
+
+.button {
+  &--no-decor {
+    @extend .text--button;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 $space;
+    transition: color 0.2s ease-out;
+
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      color: $primary-accent;
+    }
+  }
+
+}
+
