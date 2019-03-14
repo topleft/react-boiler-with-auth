@@ -3,14 +3,22 @@
 .navbar {
   display: flex;
 
-  & a {
-    margin-right: $space*1.5;
-    text-decoration: none;
+  &__link {
+    display: flex;
+    align-items: flex-end;
+
+    & a {
+      border-bottom: solid 2px transparent;
+      margin-right: $space*1.5;
+      text-decoration: none;
+      padding-bottom: 4px;
+
+      &.active {
+        border-color: $primary-accent;
+      }
+    }
+
   }
 
-  & .active {
-    padding-bottom: 1px;
-    border-bottom: solid 2px $primary-accent;
-  }
 }
 

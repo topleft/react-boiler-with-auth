@@ -4,3 +4,8 @@ body {
   background-color: $white-tint;
 }
 
+.namespace__body {
+  margin-top: $header-height;
+  padding: $space*3;
+}
+

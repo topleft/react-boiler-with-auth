@@ -40,21 +40,17 @@ describe('log in form', () => {
 
 describe('authentication: UN-AUTHED', () => {
 
-  it.only('should allow an un-authed user to see public page', () => {
-    cy.visit('localhost:8080/');
+  it('should allow an un-authed user to see public page', () => {
+    cy.visit('localhost:8080/ome');
     cy.url().should('eq', 'http://localhost:8080/home');
   });
 
-  it.only('should NOT allow an un-authed user to see private page', () => {
+  it('should NOT allow an un-authed user to see private page', () => {
     cy.visit('localhost:8080/private');
     cy.url().should('eq', 'http://localhost:8080/home');
   });
 
-  it('should NOT show an un-authed user the sign out button', () => {
-
-  });
-
-  it('should show an un-authed user the sign up button', () => {
+  it('should redirect un-authed user to log in when they click on an a private link', () => {
 
   });
 
@@ -62,7 +58,11 @@ describe('authentication: UN-AUTHED', () => {
 
   });
 
-  it('should redirect un-authed user to log in when they click on an a private link', () => {
+  it('should show an un-authed user the sign up button', () => {
+
+  });
+
+  it('should NOT show an un-authed user the sign out button', () => {
 
   });
 

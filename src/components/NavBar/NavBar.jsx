@@ -8,12 +8,13 @@ const NavBar = (props) => {
     <div className='navbar'>
       {
         props.links.map(({to, label, className}, i) => (
-          <NavLink
-            key={i}
-            className={className}
-            to={to}>
-            {label}
-          </NavLink>
+          <div className='navbar__link'  key={i}>
+            <NavLink
+              className={className}
+              to={to}>
+              {label}
+            </NavLink>
+          </div>
         ))
       }
     </div>

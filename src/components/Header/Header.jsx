@@ -1,22 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import NavBar from '../../components/NavBar';
 import './styles.scss';
 
+
 const Header = (props) => {
+  const {
+    links
+  } = props;
 
   return (
     <header className='header'>
-      <h1>topleft</h1>
-      <h2>react boiler</h2>
-      <div className={'header__links'}>
-        {props.children}
+      <div className={'header__logo'}>
+        LOGO
+      </div>
+      <div className={'header__nav'}>
+        <NavBar links={links}></NavBar>
+      </div>
+      <div className={'header__account'}>
+        ACCOUNT
       </div>
     </header>
   );
 };
 
 Header.propTypes = {
-  children: PropTypes.element
+  links: PropTypes.arrayOf({
+    to: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+  })
 };
 
 export default Header;
