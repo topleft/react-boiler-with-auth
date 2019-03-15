@@ -14,7 +14,11 @@ const HeaderAccountInfo = (props) => {
     <div className='header-account-info'>
       {
         username
-        ? username
+        ?
+        <div className='header-account-info__buttons'>
+          {username}
+          <Button testAttr='logout-button'>Log Out</Button>
+        </div>
         :
         <div className='header-account-info__buttons'>
           <Button testAttr='login-button'>Log In</Button>

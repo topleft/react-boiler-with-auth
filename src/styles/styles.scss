@@ -5,7 +5,6 @@ body {
 }
 
 .namespace__body {
-  margin-top: $header-height;
-  padding: $space*3;
+  padding: $space*3+$header-height $space*3 $space*3 $space*3;
 }
 

@@ -15,7 +15,7 @@ const PrivateRoute = (props) => {
     ? <Route
         path={to}
         render={render}/>
-    : <Redirect to={'/home'}/>;
+    : <Redirect to={'/login'}/>;
 }
 
 PrivateRoute.propTypes = {

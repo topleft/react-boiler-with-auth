@@ -2,6 +2,7 @@
 @import '../../styles/typography.scss';
 
 .button {
+  color: $default-font-color;
   &--no-decor {
     @extend .text--button;
     background: none;

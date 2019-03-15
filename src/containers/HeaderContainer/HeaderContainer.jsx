@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Header from '../../components/Header/Header';
 import fixtures from '../../fixtures';
+
 class HeaderContainer extends React.Component {
 
   constructor() {
@@ -15,9 +15,5 @@ class HeaderContainer extends React.Component {
     );
   }
 }
-
-HeaderContainer.propTypes = {
-
-};
 
 export default HeaderContainer;
