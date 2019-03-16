@@ -24,6 +24,11 @@ describe('sign up form', () => {
 
 describe('log in form', () => {
 
+  it('should not render header', () => {
+    cy.visit('localhost:8080/login');
+    cy.get('header').should('not.have.length');
+  });
+
   it('should raise an error on blur if username is not filled in', () => {
 
   });
@@ -49,7 +54,7 @@ describe('authentication: UN-AUTHED', () => {
     cy.visit('localhost:8080/private');
   });
 
-  it.only('should redirect un-authed user to log in when they click on an a private link', () => {
+  it('should redirect un-authed user to log in when they click on an a private link', () => {
     cy.visit('localhost:8080/private');
     cy.url().should('eq', 'http://localhost:8080/login');
 

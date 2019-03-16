@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
-  Redirect } from 'react-router-dom';
+  Redirect,
+  withRouter,
+} from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import PrivateRoute from '../../components/PrivateRoute';
 import HeaderContainer from '../../containers/HeaderContainer';
@@ -51,21 +52,23 @@ renderRoute.propTypes = {
   authRequired: PropTypes.bool,
 };
 
-const App = () => (
-  <Router>
-    <Fragment>
-      <HeaderContainer />
-      <div className='namespace__body'>
-        <Switch>
-          { fixtures.links.map(renderRoute) }
-          <Route to={'/login'} component={LoginContainer}/>
-          <Redirect to={'/home'}/>
-        </Switch>
-      </div>
-    </Fragment>
-  </Router>
+const App = ({location}) => (
+  <Fragment>
+    { location.pathname != '/login' ? <HeaderContainer /> : null}
+    <div className='namespace__body'>
+      <Switch>
+        { fixtures.links.map(renderRoute) }
+        <Route path={'/login'} component={LoginContainer}/>
+        <Redirect to={'/home'}/>
+      </Switch>
+    </div>
+  </Fragment>
 );
 
-export default hot(module)(App);
+App.propTypes = {
+  location: PropTypes.object
+};
+
+export default hot(module)(withRouter(App));
 
 
