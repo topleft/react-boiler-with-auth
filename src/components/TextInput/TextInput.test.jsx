@@ -7,11 +7,11 @@ describe('TextInput', () => {
   it('should render', () => {
     const wrapper = shallow(
       <TextInput
-        id={'pasta'}
+        id='pasta'
         label='label'
         name='pasta'
         handleChange={() => console.log()}
-        testAttr={'pasta'}
+        testAttr='pasta'
         isValid={true}/>
     );
     expect(wrapper.exists()).toBe(true);
@@ -20,11 +20,11 @@ describe('TextInput', () => {
   it('should render label if provided', () => {
     const wrapper = shallow(
       <TextInput
-        id={'pasta'}
+        id='pasta'
         label='Pasta'
         name='pasta'
         handleChange={() => console.log()}
-        testAttr={'pasta'}
+        testAttr='pasta'
         isValid={true}
       />
     );
@@ -34,11 +34,11 @@ describe('TextInput', () => {
   it('should add htmlFor=id attribute to the label', () => {
     const wrapper = shallow(
       <TextInput
-        id={'pasta'}
+        id='pasta'
         label='label'
         name='pasta'
         handleChange={() => console.log()}
-        testAttr={'pasta'}
+        testAttr='pasta'
         isValid={true}/>
     );
     expect(wrapper.find('label[htmlFor="pasta"]')).toHaveLength(1);
@@ -50,10 +50,10 @@ describe('TextInput', () => {
     const wrapper = shallow(
       <TextInput
         handleChange={changeFunc}
-        id={'pasta'}
+        id='pasta'
         label='label'
         name='pasta'
-        testAttr={'pasta'}
+        testAttr='pasta'
         isValid={true}/>
     );
 
@@ -68,11 +68,11 @@ describe('TextInput', () => {
     const wrapper = shallow(
       <TextInput
         handleBlur={blurFunc}
-        id={'pasta'}
+        id='pasta'
         label='label'
         name='pasta'
         handleChange={() => console.log()}
-        testAttr={'pasta'}
+        testAttr='pasta'
         isValid={true}/>
     );
 
@@ -84,16 +84,33 @@ describe('TextInput', () => {
   it('should add error class if input is invalid', () => {
     const wrapper = shallow(
       <TextInput
-        id={'pasta'}
+        id='pasta'
         label='label'
         name='pasta'
         handleChange={() => console.log()}
-        testAttr={'pasta'}
+        testAttr='pasta'
         isValid={true}/>
     );
     expect(wrapper.find('.error')).toHaveLength(0);
     wrapper.setProps({isValid: false});
     expect(wrapper.find('.error')).toHaveLength(1);
+  });
+
+  it('should show validation message if input is invalid', () => {
+    const wrapper = shallow(
+      <TextInput
+        id='pasta'
+        label='label'
+        name='pasta'
+        handleChange={() => console.log()}
+        testAttr='pasta'
+        message='Required'
+        isValid={true}/>
+    );
+
+    expect(wrapper.find('[data-test="input-message"]')).toHaveLength(0);
+    wrapper.setProps({isValid: false});
+    expect(wrapper.find('[data-test="input-message"]')).toHaveLength(1);
   });
 
 });

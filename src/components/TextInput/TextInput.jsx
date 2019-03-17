@@ -14,7 +14,6 @@ const TextInput = (props) => {
     name,
     testAttr,
   } = props;
-
   return (
     <div className='text-input'>
       <label htmlFor={id}>{label}</label>
