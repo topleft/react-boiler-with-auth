@@ -20,7 +20,12 @@ export default {
       })
       .catch((err) => {
         auth.logout();
-        throw new Error('Error on login', err);
+        switch(err.response.status) {
+          case 401:
+            throw new Error('Invalid username, password or both');
+          default:
+            throw new Error(err);
+        }
       });
   }
 };

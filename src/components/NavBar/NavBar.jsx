@@ -7,11 +7,11 @@ const NavBar = (props) => {
   return (
     <div className='navbar'>
       {
-        props.links.map(({to, label, className}, i) => (
+        props.links.map(({path, label, className}, i) => (
           <div className='navbar__link'  key={i}>
             <NavLink
               className={className}
-              to={to}>
+              to={path}>
               {label}
             </NavLink>
           </div>
@@ -23,8 +23,11 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   links: PropTypes.arrayOf({
-    to: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    label: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+    ]).isRequired,
     className: PropTypes.string.isRequired,
   })
 };

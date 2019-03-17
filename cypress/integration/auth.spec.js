@@ -1,3 +1,5 @@
+import { TOKEN_KEY } from '../../src/utils/auth.utils';
+
 describe('sign up form', () => {
 
   it('should raise an error on blur if username is not filled in', () => {
@@ -37,9 +39,59 @@ describe('log in form', () => {
 
   });
 
-  it('should let user know if log in failed', () => {
+  it.only('should let user know if log in failed', () => {
+    const data = {
+      username: 'pasta',
+      password: 'm3@tba11$'
+    };
+    cy.server();
+    cy.route({
+      method: 'post',
+      url: '/api/v1/login',
+      status: 401,
+      response: {message: 'foobar'}
+    }).as('loginRequest');
+    cy.visit('localhost:8080/login');
+    cy.get('[data-test=username]').type(data.username);
+    cy.get('[data-test=password]').type(data.password);
+    cy.get('[data-test=login-submit]').click({force: true});
+    cy.wait('@loginRequest')
+      .then(() => {
+        cy.url().should('eq', 'http://localhost:8080/login');
+        cy.get('[data-test=login-notification]').should('have.length', 1);
+        cy.get('[data-test=login-notification]').should('have.text', 'Invalid username, password or both');
+      });
+  });
+
+  it('should successfully submit login', () => {
+    const data = {
+      username: 'pasta',
+      password: 'm3@tba11$'
+    };
+    cy.clearLocalStorage();
+    expect(window.localStorage[TOKEN_KEY]).not.to.exist;
+    cy.login(data.username, data.password)
+      .then((xhr) => {
+        expect(xhr.request.body).to.eql(data);
+        expect(window.localStorage[TOKEN_KEY]).to.exist;
+      });
+  });
+
+  it('should redirect a newly authed user to their dashboard', () => {
+    const data = {
+      username: 'pasta',
+      password: 'm3@tba11$'
+    };
+    cy.login(data.username, data.password)
+      .then(() => {
+        cy.url().should('eq', 'http://localhost:8080/private');
+      });
+  });
+
+  it('should redirect a newly authed user to the page they originally intended to visit (if any)', () => {
 
   });
+
 
 });
 
@@ -97,10 +149,6 @@ describe('authentication: AUTHED', () => {
   });
 
   it('should NOT show an authed user the log in button', () => {
-
-  });
-
-  it('should redirect a newly authed user to the page they originally intended to visit (if any)', () => {
 
   });
 

@@ -1,6 +1,22 @@
 @import '../../styles/variables.scss';
 
 .login-form {
+  &__notification {
+    height:  20px;
+    border: 1px solid transparent;
+
+    .message {
+      display: none;
+    }
+
+    &.show {
+      border-color: $pink;
+      .message {
+        display: inline;
+      }
+    }
+
+  }
 
 }
 

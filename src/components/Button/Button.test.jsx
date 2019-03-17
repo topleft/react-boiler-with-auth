@@ -18,13 +18,13 @@ describe('Button', () => {
     expect(wrapper.find('[data-test="test"]')).toHaveLength(1);
   });
 
-  it('should have default type of no-decor', () => {
+  it('should have default look of no-decor', () => {
     const wrapper = shallow(<Button/>);
     expect(wrapper.find('.button--no-decor')).toHaveLength(1);
   });
 
-  it('should set type', () => {
-    const wrapper = shallow(<Button type='outline'/>);
+  it('should set look', () => {
+    const wrapper = shallow(<Button look='outline'/>);
     expect(wrapper.find('.button--outline')).toHaveLength(1);
   });
 

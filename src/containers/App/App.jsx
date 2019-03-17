@@ -15,7 +15,7 @@ import fixtures from '../../fixtures';
 
 const renderRoute = (props, index) => {
   const {
-    to,
+    path,
     render,
     component,
     authRequired,
@@ -29,18 +29,18 @@ const renderRoute = (props, index) => {
   return authRequired
     ? <PrivateRoute
       key={index}
-      path={to}
+      path={path}
       component={component}
       render={render}/>
     : <Route
       key={index}
-      path={to}
+      path={path}
       component={component}
       render={render}/>;
 };
 
 renderRoute.propTypes = {
-  to: PropTypes.string,
+  path: PropTypes.string,
   render: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.element

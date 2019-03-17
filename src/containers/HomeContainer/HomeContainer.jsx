@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../../components/Button';
 import { connect } from 'react-redux';
 import { bindActions } from '../../actions';
 
@@ -22,9 +23,9 @@ class Home extends React.Component {
             Count: {home.get('count')}
           </div>
           <div>
-            <button onClick={homeActions.incrementCount}>+</button>
-            <button onClick={homeActions.decrementCount}>-</button>
-            <button onClick={homeActions.resetCount}>reset</button>
+            <Button handleClick={homeActions.incrementCount}>+</Button>
+            <Button handleClick={homeActions.decrementCount}>-</Button>
+            <Button handleClick={homeActions.resetCount}>reset</Button>
           </div>
         </section>
       </Page>

@@ -46,7 +46,7 @@ describe('TextInput', () => {
 
   it('should call handleChange prop when input changes', () => {
     const changeFunc = jest.fn();
-    const event = { target: { value: 'Text' } }
+    const event = { target: { value: 'Text' } };
     const wrapper = shallow(
       <TextInput
         handleChange={changeFunc}
@@ -64,7 +64,7 @@ describe('TextInput', () => {
 
   it('should call handleBlur prop when focus leaves', () => {
     const blurFunc = jest.fn();
-    const event = { target: { value: 'Text' } }
+    const event = { target: { value: 'Text' } };
     const wrapper = shallow(
       <TextInput
         handleBlur={blurFunc}

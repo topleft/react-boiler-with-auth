@@ -9,17 +9,20 @@ import './styles.scss';
 const PrivateRoute = (props) => {
   const {
     path,
-    render
+    render,
+    component,
   } = props;
   return authUtils.isLoggedIn()
     ? <Route
-        path={to}
+        path={path}
         render={render}/>
     : <Redirect to={'/login'}/>;
 }
 
 PrivateRoute.propTypes = {
-
+  component: PropTypes.element,
+  path: PropTypes.string,
+  render: PropTypes.func,
 };
 
 export default PrivateRoute;

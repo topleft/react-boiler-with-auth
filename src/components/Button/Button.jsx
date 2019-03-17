@@ -10,28 +10,32 @@ const Button = (props) => {
     testAttr,
     children,
     handleClick,
+    look,
     type,
   } = props;
 
   return (
     <button
+      type={type}
       onClick={handleClick}
       data-test={testAttr}
-      className={`button button--${type}`}>
+      className={`button button--${look}`}>
         {children}
     </button>
   );
 }
 
 Button.defaultProps = {
-  type: 'no-decor'
+  look: 'no-decor',
+  default: 'button'
 }
 
 Button.propTypes = {
   testAttr: PropTypes.string,
   children: PropTypes.any,
-  handleClick: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(['no-decor', 'ouline'])
+  handleClick: PropTypes.func,
+  look: PropTypes.oneOf(['no-decor', 'outline']),
+  type: PropTypes.oneOf(['submit', 'reset', 'button']),
 };
 
 export default Button;

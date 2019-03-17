@@ -9,10 +9,10 @@ describe('NavBar', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('should render children', () => {
+  it('should render label', () => {
     const wrapper = render(
       <MemoryRouter>
-        <NavBar links={[{to: '/', children: 'Test'}]}/>
+        <NavBar links={[{path: '/', label: 'Test'}]}/>
       </MemoryRouter>
     );
 
