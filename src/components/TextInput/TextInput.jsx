@@ -5,7 +5,7 @@ import './styles.scss';
 
 const TextInput = (props) => {
   const {
-    errorMessage,
+    message,
     handleBlur,
     handleChange,
     id,
@@ -28,6 +28,13 @@ const TextInput = (props) => {
         onChange={handleChange}
         onBlur={handleBlur}
         data-test={testAttr}/>
+      <div className='text-input__message'>
+      {
+        !isValid
+        ? <span data-test='input-message'>{message}</span>
+        : <span>&nbsp;</span>
+      }
+      </div>
     </div>
   );
 }
@@ -40,7 +47,8 @@ TextInput.propTypes = {
   id: PropTypes.string.isRequired,
   testAttr: PropTypes.string.isRequired,
   isValid: PropTypes.bool,
-  errorMessage: PropTypes.string
+  message: PropTypes.string
+
 };
 
 export default TextInput;

@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+import * as yup from 'yup';
 import TextInput from '../TextInput';
 import Button from '../Button';
 import './styles.scss';
@@ -33,9 +34,14 @@ const LoginForm = (props) => {
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={(values, { setSubmitting }) => {
-          console.log('in here');
           return handleSubmit(values, () => setSubmitting(false));
-        }}>
+        }}
+        validationSchema={yup.object().shape({
+          username: yup.string()
+            .required('Required'),
+          password: yup.string()
+            .required('Required'),
+        })}>
         {props => {
           const {
             values,
@@ -44,9 +50,10 @@ const LoginForm = (props) => {
             // dirty,
             // isSubmitting,
             handleChange,
-            // handleBlur,
+            handleBlur,
             handleSubmit,
           } = props;
+          console.log(errors)
           return (
             <form onSubmit={handleSubmit}>
               <TextInput
@@ -54,14 +61,18 @@ const LoginForm = (props) => {
                 id='username'
                 testAttr='username'
                 value={values.username}
-                isValid={errors.username && touched.username}
+                message={errors.username}
+                isValid={!(errors.username && touched.username)}
+                handleBlur={handleBlur}
                 handleChange={handleChange}/>
               <TextInput
                 name='password'
                 id='password'
                 testAttr='password'
                 value={values.password}
-                isValid={errors.password && touched.password}
+                message={errors.password}
+                isValid={!(errors.password && touched.password)}
+                handleBlur={handleBlur}
                 handleChange={handleChange}/>
               <Button
                 testAttr='login-submit'

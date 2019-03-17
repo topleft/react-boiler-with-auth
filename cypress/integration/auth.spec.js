@@ -32,14 +32,22 @@ describe('log in form', () => {
   });
 
   it('should raise an error on blur if username is not filled in', () => {
-
+    cy.visit('localhost:8080/login');
+    cy.get('[data-test=input-message]').should('have.length', 0);
+    cy.get('[data-test=password]').focus().blur();
+    cy.get('[data-test=input-message]').should('have.length', 1);
+    cy.get('[data-test=input-message]').should('have.text', 'Required');
   });
 
   it('should raise an error on blur if password is not filled in', () => {
-
+    cy.visit('localhost:8080/login');
+    cy.get('[data-test=input-message]').should('have.length', 0);
+    cy.get('[data-test=username]').focus().blur();
+    cy.get('[data-test=input-message]').should('have.length', 1);
+    cy.get('[data-test=input-message]').should('have.text', 'Required');
   });
 
-  it.only('should let user know if log in failed', () => {
+  it('should let user know if log in failed', () => {
     const data = {
       username: 'pasta',
       password: 'm3@tba11$'
