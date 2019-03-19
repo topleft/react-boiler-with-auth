@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { get as _get } from 'lodash';
 import Page from 'components/Page';
 import LoginForm from '../../components/LoginForm/LoginForm';
-import { connect } from 'react-redux';
 import { bindActions } from '../../actions';
+
 
 
 class LoginContainer extends React.Component {
@@ -16,7 +18,9 @@ class LoginContainer extends React.Component {
     this.props.userActions.fetchLogin(data)
       .then(() => {
         cb();
-        this.props.history.push('/private');
+        const { history } = this.props;
+        const from = _get(history, 'location.state.from', '/private');
+        this.props.history.push(from);
       })
       .catch(() => {
         cb();

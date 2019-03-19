@@ -1,5 +1,6 @@
 import axios from 'axios';
 import auth from '../utils/auth.utils';
+import { get as _get } from 'lodash';
 
 const AUTH_API_BASE_URL = 'http://www.localhost:3000';
 
@@ -20,7 +21,8 @@ export default {
       })
       .catch((err) => {
         auth.logout();
-        switch(err.response.status) {
+        const status = _get(err, 'response.status', null);
+        switch(status) {
           case 401:
             throw new Error('Invalid username, password or both');
           default:

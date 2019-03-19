@@ -39,7 +39,6 @@ const TOKEN_KEY = 'token';
 export default {
 
   setToken(token) {
-    console.log('in that set');
     localStorage.setItem(TOKEN_KEY, token);
   }
 

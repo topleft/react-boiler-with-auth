@@ -29,5 +29,11 @@ export default [
     label: 'Private',
     authRequired: true,
     render: PrivateContainer
+  },{
+    path: '/private2',
+    className: 'private2',
+    label: 'Private2',
+    authRequired: true,
+    render: PrivateContainer
   }
 ];

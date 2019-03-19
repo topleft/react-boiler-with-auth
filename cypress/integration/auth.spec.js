@@ -96,8 +96,23 @@ describe('log in form', () => {
       });
   });
 
-  it('should redirect a newly authed user to the page they originally intended to visit (if any)', () => {
-
+  it.only('should redirect a newly authed user to the page they originally intended to visit (if any)', () => {
+    const data = {
+      username: 'pasta',
+      password: 'm3@tba11$'
+    };
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE4NjcwMjk2MTg5NjZ9.voxBnVVuzm9cXuDfha14c-bGSFvVaEZGz3kkcYjhD9Y';
+    cy.server();
+    cy.route('post', '/api/v1/login', {token}).as('loginRequest');
+    cy.visit('localhost:8080/private2');
+    cy.url().should('eq', 'http://localhost:8080/login');
+    cy.get('[data-test=username]').type(data.username);
+    cy.get('[data-test=password]').type(data.password);
+    cy.get('[data-test=login-submit]').click({force: true});
+    cy.wait('@loginRequest')
+      .then(() => {
+        cy.url().should('eq', 'http://localhost:8080/private2');
+      });
   });
 
 

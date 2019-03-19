@@ -10,7 +10,7 @@ describe('TextInput', () => {
         id='pasta'
         label='label'
         name='pasta'
-        handleChange={() => console.log()}
+        handleChange={() => null}
         testAttr='pasta'
         isValid={true}/>
     );
@@ -23,7 +23,7 @@ describe('TextInput', () => {
         id='pasta'
         label='Pasta'
         name='pasta'
-        handleChange={() => console.log()}
+        handleChange={() => null}
         testAttr='pasta'
         isValid={true}
       />
@@ -37,7 +37,7 @@ describe('TextInput', () => {
         id='pasta'
         label='label'
         name='pasta'
-        handleChange={() => console.log()}
+        handleChange={() => null}
         testAttr='pasta'
         isValid={true}/>
     );
@@ -71,7 +71,7 @@ describe('TextInput', () => {
         id='pasta'
         label='label'
         name='pasta'
-        handleChange={() => console.log()}
+        handleChange={() => null}
         testAttr='pasta'
         isValid={true}/>
     );
@@ -87,7 +87,7 @@ describe('TextInput', () => {
         id='pasta'
         label='label'
         name='pasta'
-        handleChange={() => console.log()}
+        handleChange={() => null}
         testAttr='pasta'
         isValid={true}/>
     );
@@ -102,7 +102,7 @@ describe('TextInput', () => {
         id='pasta'
         label='label'
         name='pasta'
-        handleChange={() => console.log()}
+        handleChange={() => null}
         testAttr='pasta'
         message='Required'
         isValid={true}/>

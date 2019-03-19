@@ -53,7 +53,7 @@ const LoginForm = (props) => {
             handleBlur,
             handleSubmit,
           } = props;
-          console.log(errors)
+
           return (
             <form onSubmit={handleSubmit}>
               <TextInput

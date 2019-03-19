@@ -32,6 +32,7 @@ describe('user reducer',() => {
     const expected = Map({
       isLoggedIn: false,
       isLoggingIn: true,
+      errMessage: null,
       user,
     });
     expect(userReducer(undefined, action)).toEqual(expected);
@@ -46,17 +47,29 @@ describe('user reducer',() => {
     const expected = Map({
       isLoggedIn: true,
       isLoggingIn: false,
+      errMessage: null,
       user,
     });
-    expect(userReducer(undefined, action)).toEqual(expected);
+    expect(userReducer(Map({}), action)).toEqual(expected);
   });
 
   it('should return empty state on LOGIN_FAILURE', () => {
+    const errMessage = 'Error';
     const action = {
       type: userConstants.LOGIN_FAILURE,
+      error: errMessage
     };
-    const expected = Map({});
+    const expected = Map({errMessage});
     expect(userReducer(undefined, action)).toEqual(expected);
+  });
+
+  it('should return empty errMessage field in state on RESET_LOGIN_ERROR', () => {
+    const action = {
+      type: userConstants.RESET_LOGIN_ERROR,
+    };
+    const expected = Map({errMessage: null});
+
+    expect(userReducer(Map({}), action)).toEqual(expected);
   });
 
 });

@@ -32,18 +32,20 @@ describe('user actions', () => {
       });
   });
 
-  it('creates a LOGIN_SUCCESS action when login is successful', () => {
-    const res = {
-      data: {},
-      status: 401,
+  it('creates a LOGIN_FAILURE action when login fails', () => {
+    const err = {
+      response: {
+        data: {},
+        status: 401,
+      }
     };
-    mockAxios.post.mockImplementationOnce( () =>  Promise.resolve(res) );
+    mockAxios.post.mockImplementationOnce( () =>  Promise.resolve(err) );
     const username = 'joe_schmoe';
     const password = 'password123';
 
     const expectedActions = [
       { type: userConstants.LOGIN_REQUEST , user: { username } },
-      { type: userConstants.LOGIN_FAILURE, error: 'Error on login' }
+      { type: userConstants.LOGIN_FAILURE, error: 'Error: Invalid response on login' }
     ];
     const store = mockStore({ user: {} });
 
