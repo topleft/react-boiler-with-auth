@@ -57,6 +57,7 @@ const LoginForm = (props) => {
           return (
             <form onSubmit={handleSubmit}>
               <TextInput
+                label='Username'
                 name='username'
                 id='username'
                 testAttr='username'
@@ -66,6 +67,7 @@ const LoginForm = (props) => {
                 handleBlur={handleBlur}
                 handleChange={handleChange}/>
               <TextInput
+                label='Password'
                 name='password'
                 id='password'
                 testAttr='password'

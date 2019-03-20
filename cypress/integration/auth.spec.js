@@ -24,7 +24,7 @@ describe('sign up form', () => {
 
 });
 
-describe('log in form', () => {
+describe('login form', () => {
 
   it('should not render header', () => {
     cy.visit('localhost:8080/login');

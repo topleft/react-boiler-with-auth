@@ -16,7 +16,10 @@ const TextInput = (props) => {
   } = props;
   return (
     <div className='text-input'>
-      <label htmlFor={id}>{label}</label>
+      <label
+        className='text-input__label'
+        htmlFor={id}>
+        {label}</label>
       <input
         className={
           isValid ? 'text-input__input' : 'text-input__input error'
@@ -27,7 +30,7 @@ const TextInput = (props) => {
         onChange={handleChange}
         onBlur={handleBlur}
         data-test={testAttr}/>
-      <div className='text-input__message'>
+      <div className='text-input__message text-input__message--error'>
       {
         !isValid
         ? <span data-test='input-message'>{message}</span>
