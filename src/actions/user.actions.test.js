@@ -39,19 +39,22 @@ describe('user actions', () => {
         status: 401,
       }
     };
-    mockAxios.post.mockImplementationOnce( () =>  Promise.resolve(err) );
+    mockAxios.post.mockImplementationOnce( () =>  Promise.reject(err) );
     const username = 'joe_schmoe';
     const password = 'password123';
 
     const expectedActions = [
       { type: userConstants.LOGIN_REQUEST , user: { username } },
-      { type: userConstants.LOGIN_FAILURE, error: 'Error: Invalid response on login' }
+      { type: userConstants.LOGIN_FAILURE, error: 'Invalid username, password or both' }
     ];
     const store = mockStore({ user: {} });
 
     return store.dispatch(userActions.fetchLogin({username, password}))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
+      })
+      .catch((err) => {
+        expect(err.message).toEqual('Invalid username, password or both');
       });
   });
 

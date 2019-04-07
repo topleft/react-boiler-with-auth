@@ -2,21 +2,48 @@
 @import '../../styles/typography.scss';
 
 .button {
+
+  background: none;
   color: $default-font-color;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
   &--no-decor {
     @extend .text--button;
-    background: none;
     border: none;
-    cursor: pointer;
     margin: 0 $space;
     transition: color 0.2s ease-out;
 
-    &:focus {
-      outline: 0;
-    }
+
     &:hover {
       color: $primary-accent;
     }
+  }
+
+  &--outline {
+    @extend .text--button;
+    border-color: $primary-accent;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: $primary-accent;
+    padding: $space/3 $space;
+    transition: all 0.2s ease-out;
+
+    &:hover, :not(.disabled) {
+      background-color: $primary-accent;
+      color: $white;
+    }
+  }
+
+  &.disabled {
+    color: $grey-light;
+    border-color: $grey-light;
+    pointer-events: none;
+    cursor: default;
   }
 
 }

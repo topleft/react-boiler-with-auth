@@ -11,7 +11,8 @@
     "lint": "eslint --ext .js --ext .jsx ./",
     "lint:fix": "npm run lint -- --fix",
     "svgo": "svgo -f ./src/static",
-    "test:cypress": "cypress open"
+    "test:cypress": "cypress run",
+    "test:cypress:watch": "cypress open"
   },
   "browserslist": [
     "last 2 version"

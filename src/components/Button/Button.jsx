@@ -4,6 +4,18 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { props } from 'bluebird';
 
+const getClass = (props) => {
+  const {
+    look,
+    disabled,
+    fullWidth,
+  } = props;
+  return `
+    button button--${look}
+    ${disabled ? 'disabled' : ''}
+    ${fullWidth ? 'full-width' : ''}
+  `
+}
 
 const Button = (props) => {
   const {
@@ -12,6 +24,7 @@ const Button = (props) => {
     handleClick,
     look,
     type,
+    disabled,
   } = props;
 
   return (
@@ -19,7 +32,7 @@ const Button = (props) => {
       type={type}
       onClick={handleClick}
       data-test={testAttr}
-      className={`button button--${look}`}>
+      className={getClass(props)}>
         {children}
     </button>
   );
@@ -33,6 +46,8 @@ Button.defaultProps = {
 Button.propTypes = {
   testAttr: PropTypes.string,
   children: PropTypes.any,
+  disabled: PropTypes.bool,
+  fullWidth: PropTypes.bool,
   handleClick: PropTypes.func,
   look: PropTypes.oneOf(['no-decor', 'outline']),
   type: PropTypes.oneOf(['submit', 'reset', 'button']),

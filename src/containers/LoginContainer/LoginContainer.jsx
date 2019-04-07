@@ -22,7 +22,8 @@ class LoginContainer extends React.Component {
         const from = _get(history, 'location.state.from', '/private');
         this.props.history.push(from);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log('error', error);
         cb();
       });
   }

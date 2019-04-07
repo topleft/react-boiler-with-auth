@@ -12,6 +12,7 @@ export const fetchLogin = ({username, password}) => (dispatch) => {
         err.message
       );
       dispatch(failure(err.message));
+      return Promise.reject(err);
     });
 };
 

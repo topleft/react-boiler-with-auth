@@ -10,6 +10,7 @@ import './styles.scss';
 
 
 const LoginForm = (props) => {
+  console.log('loaded the form comp');
   const {
     handleSubmit,
     notification,
@@ -34,7 +35,12 @@ const LoginForm = (props) => {
       <Formik
         initialValues={{ username: '', password: '' }}
         onSubmit={(values, { setSubmitting }) => {
-          return handleSubmit(values, () => setSubmitting(false));
+          handleSubmit(values, () => setSubmitting(false));
+          // setTimeout(() => {
+          //   // throw new Error("error");
+          //   alert(JSON.stringify(values, null, 2));
+          //   setSubmitting(false);
+          // }, 500);
         }}
         validationSchema={yup.object().shape({
           username: yup.string()
@@ -76,10 +82,15 @@ const LoginForm = (props) => {
                 isValid={!(errors.password && touched.password)}
                 handleBlur={handleBlur}
                 handleChange={handleChange}/>
-              <Button
-                testAttr='login-submit'
-                type='submit'>
-                Submit</Button>
+              <div className='login-form__buttons'>
+                <Button
+                  disabled={Object.values(errors).length}
+                  look='outline'
+                  testAttr='login-submit'
+                  type='submit'>
+                  Submit
+                </Button>
+              </div>
             </form>
           );
         }}
